@@ -13,6 +13,9 @@ install: \
 build:
 	docker build -t $(NAME) .
 
+run:
+	docker run -it --rm -w $(WORKDIR) $(foreach v,$(VOLUMES),-v $v) $(NAME) make run
+
 bash:
 	docker run -it --rm -w $(WORKDIR) $(foreach v,$(VOLUMES),-v $v) $(NAME) $@
 
