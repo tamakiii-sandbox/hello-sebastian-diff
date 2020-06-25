@@ -1,4 +1,4 @@
-.PHONY: help install build bash clean
+.PHONY: help install build bash make/% clean
 
 NAME := hello-sebastian-diff
 WORKDIR := /work
@@ -13,11 +13,11 @@ install: \
 build:
 	docker build -t $(NAME) .
 
-run:
-	docker run -it --rm -w $(WORKDIR) $(foreach v,$(VOLUMES),-v $v) $(NAME) make run
-
 bash:
 	docker run -it --rm -w $(WORKDIR) $(foreach v,$(VOLUMES),-v $v) $(NAME) $@
+
+make/%:
+	docker run -it --rm -w $(WORKDIR) $(foreach v,$(VOLUMES),-v $v) $(NAME) make $(@F)
 
 clean:
 	docker image rm $(NAME)
