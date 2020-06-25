@@ -1,4 +1,6 @@
 {
     "name": "tamakiii-sandbox/hello-sebastian-diff",
-    "require": {}
+    "require": {
+        "sebastian/diff": "^4.0"
+    }
 }
