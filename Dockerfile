@@ -3,6 +3,7 @@ FROM php:7.4.6
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       git \
+      make \
       && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
